@@ -1,14 +1,15 @@
-<h1>This is our Index page</h1>
+<%
+    article=@article
+%>
+<h1><%= article.title %></h1>
 
-<% @articles.each do |article| %>
 <p>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><%= article.title %></h5>
     <p class="card-text"><%= article.content %></p>
-    <a href="<%= article_path(article.id) %>" class="card-link">More details</a>
-    
+    <a href="../articles" class="card-link">Back</a>
+    <%= link_to "Back", root_path() %>
   </div>
 </div>
 </p>
-<% end %>
