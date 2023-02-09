@@ -4,8 +4,8 @@
 <p>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title"><%= article.title %></h5>
-    <p class="card-text"><%= article.content %></p>
+    <%= render "article", article: article %>
+    
     <a href="<%= article_path(article.id) %>" class="card-link">More details</a>
     
   </div>
@@ -13,4 +13,4 @@
 </p>
 <% end %>
 
-<%= link_to "New", articles_new_path %>
+<%= link_to "New", new_article_path %>

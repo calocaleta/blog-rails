@@ -1,4 +1,13 @@
 <%= form_with model: article do |form| %>
+<% if article.errors.any? %>
+  <h2><%= pluralize(article.errors.count,"error") %> prevented article from being saved</h2>
+
+  <ul>
+  <% article.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+  <% end %>
+  </ul>
+<% end %>
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">

@@ -6,10 +6,27 @@
 <p>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title"><%= article.title %></h5>
-    <p class="card-text"><%= article.content %></p>
-    <a href="../articles" class="card-link">Back</a>
-    <%= link_to "Back", root_path() %>
+    <%= render "article", article: article %>
+    
+    <a href="<%= root_path() %>" class="card-link">Back</a>
+    <a href="<%= article_path %>/edit" class="card-link">Edit</a>
+    <%= link_to "Editar", edit_article_path(article) %>
+    <%= button_to "Delete", article_path(article.id), method: :delete, class: "btn btn-danger" %>
+    <h2>New Comment</h2>
+    <%= form_with model: [@article, @article.comments.build] do |f| %>
+      <%= f.text_area :body %>
+      <%= f.submit %>
+    <% end %>
+
+    <div class="alert alert-warning" role="alert">
+      <h4 class="alert-heading">Comments</h4>
+        <% @article.comments.each do |comment| %>
+        <hr>
+        <p><%= comment.body %></p>
+        <% end %>
+    </div>
+
+
   </div>
 </div>
 </p>

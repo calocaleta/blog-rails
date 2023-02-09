@@ -3,12 +3,17 @@ Rails.application.routes.draw do
   #get "/", to: "articles#index"
   root "articles#index"
 
-  post "/articles/:id", to: "articles#update"
-  get "/articles/:id/edit", to: "articles#edit"
-  post "/articles", to: "articles#create"
-  get "/articles/new", to: "articles#new"
-  get "/articles", to: "articles#index"
-  get "/articles/:id", to: "articles#show", as: :article
+  resources :articles do
+    resources :comments
+  end
+  
+#  delete "/articles/:id", to: "articles#destroy"
+#  patch "/articles/:id", to: "articles#update"
+#  get "/articles/:id/edit", to: "articles#edit"
+#  post "/articles", to: "articles#create"
+#  get "/articles/new", to: "articles#new"
+#  get "/articles", to: "articles#index"
+#  get "/articles/:id", to: "articles#show", as: :article
   
 
   # Defines the root path route ("/")
